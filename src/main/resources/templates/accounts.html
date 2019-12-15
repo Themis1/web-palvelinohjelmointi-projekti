@@ -5,22 +5,41 @@
         <title>Accounts</title>
     </head>
     <body>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/logout}">Logout</a>
 
         <h2>Accounts</h2>
 
         <ol>
             <li th:each="account : ${accounts}">
-                <span th:text="${account.username}">msg</span>
+                <span th:text="${account.username}">User</span>
+                <a th:href="@{/viewaccount/{url}(url=${account.url})}">Show my profile</a>
             </li>
         </ol>
-
         
         <form method="POST" th:action="@{/accounts}">
-            <input type="text" name="username"/>
-            <input type="text" name="name"/>
-            <input type="text" name="url"/>            
-            <input type="password" name="password"/>
-            <input type="submit" value="Add new account!"/>
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" name="username"/><</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name"/><</td>
+                </tr>        
+                <tr>
+                    <td>Url</td>
+                    <td><input type="text" name="url"/><</td>
+                </tr>                
+                <tr>
+                    <td>Password</td>
+                    <td><input type="text" name="password"/><</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Add new account!"/><</td>
+                </tr>
+
         </form>
     </body>
 </html>

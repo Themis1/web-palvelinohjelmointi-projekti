@@ -20,21 +20,21 @@ public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapt
     private UserDetailsService userDetailsService;    
     
     @Override
-    public void configure(WebSecurity sec) throws Exception { //vai HttpSecurity http
+    public void configure(HttpSecurity http) throws Exception { //vai HttpSecurity http // WebSecurity sec
         // Pyyntöjä ei tarkasteta
-        sec.ignoring().antMatchers("/**");
+        //sec.ignoring().antMatchers("/**");
 
         // poistetaan csrf-tarkistus käytöstä h2-konsolin vuoksi
-        //http.csrf().disable();
+        http.csrf().disable();
         // sallitaan framejen käyttö
-        //http.headers().frameOptions().sameOrigin();
+        http.headers().frameOptions().sameOrigin();
 
-//        http.authorizeRequests()
-//                .antMatchers("/accounts","/accounts/**").permitAll()
-//                .antMatchers("/h2-console","/h2-console/**").permitAll()
-//                .anyRequest().authenticated().and()
-//                .formLogin().permitAll().and()
-//                .logout().permitAll();
+        http.authorizeRequests()
+                .antMatchers("/accounts","/accounts/**").permitAll()
+                .antMatchers("/h2-console","/h2-console/**").permitAll()
+                .anyRequest().authenticated().and()
+                .formLogin().permitAll().and()
+                .logout().permitAll();
     }
 
     @Autowired
