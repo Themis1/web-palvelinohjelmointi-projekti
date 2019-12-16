@@ -13,7 +13,7 @@
         <ol>
             <li th:each="account : ${accounts}">
                 <span th:text="${account.username}">User</span>
-                <a th:href="@{/viewaccount/{url}(url=${account.url})}">Show my profile</a>
+                <a th:href="@{/viewaccount/{urli}(urli=${account.urli})}">Show my profile</a>
             </li>
         </ol>
         
@@ -25,11 +25,11 @@
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td><input type="text" name="name"/><</td>
+                    <td><input type="text" name="nimi"/><</td>
                 </tr>        
                 <tr>
                     <td>Url</td>
-                    <td><input type="text" name="url"/><</td>
+                    <td><input type="text" name="urli"/><</td>
                 </tr>                
                 <tr>
                     <td>Password</td>
@@ -39,6 +39,7 @@
                     <td></td>
                     <td><input type="submit" value="Add new account!"/><</td>
                 </tr>
+            </table>
 
         </form>
     </body>

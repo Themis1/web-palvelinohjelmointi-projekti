@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>Pics</title>
+    </head>
+    <body>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/logout}">Logout</a>
+
+        <h2>Pics</h2>
+
+        <ol>
+            <li th:each="kuva : ${kuvat}">
+                <span th:text="${kuva.kuvaus}">User</span>
+                <a th:href="@{/profile/{urli}(urli=${account.urli})}">Näytä kenen kuva</a>
+            </li>
+        </ol>
+        
+        <form method="POST" th:action="@{/accounts}">
+            <table>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Add new pic!"/><</td>
+                </tr>
+            </table>
+
+        </form>
+    </body>
+</html>
